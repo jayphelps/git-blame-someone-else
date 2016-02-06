@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+AUTHOR=$1
+COMMIT=$(git rev-parse --short $2)
+
+{
+  GIT_SEQUENCE_EDITOR="sed -i -e 's/^pick $COMMIT/edit $COMMIT/'" git rebase -i $COMMIT~1^^ 
+  git commit --amend --no-edit --author="$AUTHOR"
+  git rebase --continue
+} &> /dev/null
+
+echo "$AUTHOR is now the author of $COMMIT. You're officially an asshole.";
