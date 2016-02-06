@@ -15,3 +15,7 @@ $ git blame-someone-else <author> <commit>
 ```
 
 ![ezgif-1396449034](https://cloud.githubusercontent.com/assets/762949/12863650/068e2820-cc2e-11e5-80c5-6ebdb71f51ea.gif)
+
+## Disclaimer:
+
+This changes not only who authored the commit but the listed commiter as well. It also is something I wrote as a joke, so please don't run this against your production repo and complain if this script deletes everything.
