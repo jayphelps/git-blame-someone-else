@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ $# -ne 2 ]; then
+  >&2 echo "Usage: $0 <author> <commit>"
+  exit 1
+fi
+
 AUTHOR=$1
 AUTHOR_NAME=$(echo $AUTHOR | perl -wlne '/^(.*)\s*<.*>$/ and print $1')
 AUTHOR_EMAIL=$(echo $AUTHOR | perl -wlne '/^.*\s*<(.*)>$/ and print $1')
