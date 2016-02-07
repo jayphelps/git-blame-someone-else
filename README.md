@@ -2,6 +2,8 @@
 
 > "I love git-blame-someone-else!!" -[Linus Torvalds says](https://github.com/jayphelps/git-blame-someone-else/commit/e5cfe4bb2190a2ae406d5f0b8f49c32ac0f01cd7)*
 
+![linus](https://s3.amazonaws.com/f.cl.ly/items/2l0i442m373z2H030b11/Image%202016-02-07%20at%201.10.25%20PM.png?v=b4f5a127)
+
 ## Install
 
 ```bash
