@@ -6,8 +6,8 @@ if [ $# -ne 2 ]; then
 fi
 
 AUTHOR=$1
-AUTHOR_NAME=$(echo $AUTHOR | perl -wlne '/^(.*)\s*<.*>$/ and print $1')
-AUTHOR_EMAIL=$(echo $AUTHOR | perl -wlne '/^.*\s*<(.*)>$/ and print $1')
+AUTHOR_NAME=$(echo $AUTHOR | perl -wlne '/^(.*)\s*<.*>$/ and print $1' | awk '{gsub(/^ +| +$/,"")} {print $0}')
+AUTHOR_EMAIL=$(echo $AUTHOR | perl -wlne '/^.*\s*<(.*)>$/ and print $1' | awk '{gsub(/^ +| +$/,"")} {print $0}')
 COMMIT=$(git rev-parse --short $2)
 
 {
