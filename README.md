@@ -14,6 +14,8 @@ $ sudo make install
 
 ```bash
 $ git blame-someone-else <author> <commit>
+OR
+$ git blame-someone-else "random" <commit>
 ```
 
 ![ezgif-1396449034](https://cloud.githubusercontent.com/assets/762949/12863650/068e2820-cc2e-11e5-80c5-6ebdb71f51ea.gif)
