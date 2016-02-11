@@ -6,6 +6,15 @@ if [ $# -ne 2 ]; then
 fi
 
 AUTHOR=$1
+
+if [ "$1" = "random" ]; then
+    CONTRIBUTORS_RAW=$(git shortlog -s)
+    CONTRIBUTORS=($CONTRIBUTORS_RAW)
+    NUM_OF_CONTRIBUTORS=${#CONTRIBUTORS[*]}
+    RAND_NUM=$(( ( RANDOM % (${#CONTRIBUTORS[*]} / 3) ) * 3  + 1 ))
+    AUTHOR="${CONTRIBUTORS[$RAND_NUM]} ${CONTRIBUTORS[$RAND_NUM + 1]}"
+fi
+
 AUTHOR_NAME=$(echo $AUTHOR | perl -wlne '/^(.*)\s*<.*>$/ and print $1')
 AUTHOR_EMAIL=$(echo $AUTHOR | perl -wlne '/^.*\s*<(.*)>$/ and print $1')
 COMMIT=$(git rev-parse --short $2)
