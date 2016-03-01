@@ -6,9 +6,16 @@ if [ $# -ne 2 ]; then
 fi
 
 AUTHOR=$1
+
+
+COMMIT_HASH=$2
+if [ "$2" = "--" ]; then
+    COMMIT_HASH=$(git log -n 1 --pretty=format:"%H")
+fi
+
 AUTHOR_NAME=$(echo $AUTHOR | perl -wlne '/^(.*)\s*<.*>$/ and print $1')
 AUTHOR_EMAIL=$(echo $AUTHOR | perl -wlne '/^.*\s*<(.*)>$/ and print $1')
-COMMIT=$(git rev-parse --short $2)
+COMMIT=$(git rev-parse --short $COMMIT_HASH)
 
 {
   GIT_SEQUENCE_EDITOR="sed -i -e 's/^pick $COMMIT/edit $COMMIT/'" git rebase -i $COMMIT~1^^ 
