@@ -22,4 +22,6 @@ $ git blame-someone-else <author> <commit>
 
 This changes not only who authored the commit but the listed commiter as well. It also is something I wrote as a joke, so please don't run this against your production repo and complain if this script deletes everything.
 
+**WARNING**: It changes id of the commit (the hash) and all commits following it, read about [rewriting history](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History) and consequences of that.
+
 *Linus Torvalds didn't really approve of this. It's a joke to prove it works. [See his fake commit here](https://github.com/jayphelps/git-blame-someone-else/commit/e5cfe4bb2190a2ae406d5f0b8f49c32ac0f01cd7)
