@@ -14,3 +14,6 @@ uninstall:
 	test -d $(prefix)/bin && \
 	cd $(prefix)/bin && \
 	rm -f $(EXEC_FILES)
+	
+	
+#I don't know just change the code
