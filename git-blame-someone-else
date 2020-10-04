@@ -16,4 +16,14 @@ COMMIT=$(git rev-parse --short $2)
   git rebase --continue
 } &> /dev/null
 
-echo "$AUTHOR_NAME is now the author of $COMMIT. You're officially an asshole.";
+INSULTS=(
+	"You're officially an asshole."
+	"Great job."
+	"You dirty animal."
+	"They owe you one."
+)
+
+INDEX=$(($RANDOM % ${#INSULTS[@]}))
+
+echo "$AUTHOR_NAME is now the author of $COMMIT. ${INSULTS[$INDEX]}";
+
