@@ -11,9 +11,11 @@ AUTHOR_EMAIL=$(echo $AUTHOR | perl -wlne '/^.*\s*<(.*)>$/ and print $1')
 COMMIT=$(git rev-parse --short $2)
 
 {
+  git stash push -a -m "__git-blame-someone-else"
   GIT_SEQUENCE_EDITOR="sed -i -e 's/^pick $COMMIT/edit $COMMIT/'" git rebase -i $COMMIT~1^^ 
-  GIT_COMMITTER_NAME="$AUTHOR_NAME" GIT_COMMITTER_EMAIL="$AUTHOR_EMAIL" git commit --amend --no-edit --author="$AUTHOR"
+  GIT_COMMITTER_NAME="$AUTHOR_NAME" GIT_COMMITTER_EMAIL="$AUTHOR_EMAIL" git commit --amend --no-edit --author="$AUTHOR" --allow-empty
   git rebase --continue
+  git stash list | grep "__git-blame-someone-else" && git stash pop
 } &> /dev/null
 
 echo "$AUTHOR_NAME is now the author of $COMMIT. You're officially an asshole.";
